@@ -19,7 +19,7 @@
                     <table width="100%";>
                         <tr>
                             <td width="100px"><label style="color:black">Full Name: &nbsp</label></td>
-                            <td style="display: flex;"><input type="text" width="100%" name="uname" maxlength="50" required style="font-size:20px; flex: 1;"></td>
+                            <td style="display: flex;"><input type="text" width="100%" name="fname" maxlength="50" required style="font-size:20px; flex: 1;"></td>
                         </tr>
                         <tr>
                             <td></td>
