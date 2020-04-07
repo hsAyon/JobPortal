@@ -164,7 +164,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><label style="font-size: 15px; color: red;"></label><?php echo $nerr ?></td>
+                            <td style="font-size: 15px; color: red;"><?php echo $nerr ?></td>
                         </tr>
                         <!-- username -->
                         <tr>
@@ -173,7 +173,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><label style="font-size: 15px; color: red;"></label><?php echo $uerr ?></td>
+                            <td style="font-size: 15px; color: red;"><?php echo $uerr ?></td>
                         </tr>
                         <!-- password -->
                         <tr>
@@ -182,7 +182,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><label style="font-size: 15px; color: red;"></label><?php echo $perr ?></td>
+                            <td style="font-size: 15px; color: red;"><?php echo $perr ?></td>
                         </tr>
                         <!-- confirm password -->
                         <tr>
@@ -191,7 +191,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><label style="font-size: 15px; color: red;"></label><?php echo $cperr ?></td>
+                            <td style="font-size: 15px; color: red;"><?php echo $cperr ?></td>
                         </tr>
                         <!-- email -->
                         <tr>
@@ -200,7 +200,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><label style="font-size: 15px; color: red;"></label><?php echo $emerr ?></td>
+                            <td style="font-size: 15px; color: red;"><?php echo $emerr ?></td>
                         </tr>
                         <!-- gender -->
                         <tr>
@@ -216,7 +216,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><label style="font-size: 15px; color: red;"></label><?php echo $gerr ?></td>
+                            <td style="font-size: 15px; color: red;"><?php echo $gerr ?></td>
                         </tr>
                         <!-- contact -->
                         <tr>
@@ -225,7 +225,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><label style="font-size: 15px; color: red;"></label><?php echo $cerr ?></td>
+                            <td style="font-size: 15px; color: red;"><?php echo $cerr ?></td>
                         </tr>
                         <!-- university -->
                         <tr>
@@ -234,7 +234,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><label style="font-size: 15px; color: red;"></label><?php echo $unierr ?></td>
+                            <td style="font-size: 15px; color: red;"><?php echo $unierr ?></td>
                         </tr>
                         <!-- cgpa -->
                         <tr>
@@ -243,7 +243,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><label style="font-size: 15px; color: red;"></label><?php echo $cgerr ?></td>
+                            <td style="font-size: 15px; color: red;"><?php echo $cgerr ?></td>
                         </tr>
                         <!-- skill -->
                         <tr>
@@ -252,7 +252,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><label style="font-size: 15px; color: red;"></label><?php echo $skerr ?></td>
+                            <td style="font-size: 15px; color: red;"><?php echo $skerr ?></td>
                         </tr>
                         <!-- experience -->
                         <tr>
@@ -261,7 +261,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><label style="font-size: 15px; color: red;"></label><?php echo $experr ?></td>
+                            <td style="font-size: 15px; color: red;"><?php echo $experr ?></td>
                         </tr>
                         <!-- salary -->
                         <tr>
@@ -270,7 +270,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><label style="font-size: 15px; color: red;"></label><?php echo $salerr ?></td>
+                            <td style="font-size: 15px; color: red;"><?php echo $salerr ?></td>
                         </tr>
 
 
