@@ -31,22 +31,28 @@
                 if(password_verify($_POST['pass'],$row['password'])){
                     if($row['usertype']=="admin")
                     {
-                        $_SESSION['user']=$row['username'];
+                        $_SESSION['user']=$row['ID'];
+                        $_SESSION['email']=$row['email'];
                         $_SESSION['usertype']="admin";
+                        $_SESSION['username']=$row['username'];
                         header("Location: admin.php");
                     }
     
                     elseif($row['usertype']=="seeker")
                     {
-                        $_SESSION['user']=$row['username'];
+                        $_SESSION['user']=$row['ID'];
+                        $_SESSION['email']=$row['email'];
                         $_SESSION['usertype']="seeker";
-                        header("Location: seeker.php");
+                        $_SESSION['username']=$row['username'];
+                        header("Location: EmployeeProfile.php");
                     }
                     
                     elseif($row['usertype']=="employer")
                     {
-                        $_SESSION['user']=$row['username'];
+                        $_SESSION['user']=$row['ID'];
+                        $_SESSION['email']=$row['email'];
                         $_SESSION['usertype']="employer";
+                        $_SESSION['username']=$row['username'];
                         header("Location: employer.php");
                     }
 
@@ -98,7 +104,7 @@
 
                     <form action="" method="POST">
 
-                    <div align="left" style="background-color: lightgrey; padding: 50px; color:black; max-width: 750px; padding-left: 100px; padding-right: 100px;">
+                    <div align="left" style="background-color: #e6e6e6; padding: 50px; color:black; max-width: 750px; padding-left: 100px; padding-right: 100px;">
                     <label style="font-size: 25px">Log In</label>
                     <br><br><br>
                     <table width="100%">

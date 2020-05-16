@@ -9,6 +9,9 @@
     
     $name=$uname=$pass=$cpass=$fpass=$email=$type=$contact=$loc=$web=$lic="";
 
+
+    error_reporting(0);
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if(isset($_POST['homereg'])){
             $name=$_POST['name'];
@@ -23,12 +26,37 @@
 
             if(!empty($_POST['uname'])){
                 $uname=$_POST['uname'];
+                $sqlUserCheck = "SELECT * FROM login WHERE username = '$uname'";
+                $result = mysqli_query($conn, $sqlUserCheck);
+
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $uNameInDB = $row['username'];
+                }
+                if ($uNameInDB == $uname) {
+                    $uerr = "UserName already exists!";
+                    $uname="";
+                } 
+                else {
+                    $uname=$_POST['uname'];
+                }
             }
             else{
                 $uerr="No username given!";
             }
             if(!empty($_POST['email'])){
                 $email=$_POST['email'];
+                $sqlUserCheck = "SELECT * FROM login WHERE email = '$email'";
+                $result = mysqli_query($conn, $sqlUserCheck);
+
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $emailInDB = $row['email'];
+                }
+                if ($emailInDB == $email) {
+                    $emerr = "Email already exists!";
+                } 
+                else {
+                    $email=$_POST['email'];
+                }
             }
             else {
                 $emerr="No email given!";
@@ -85,8 +113,8 @@
             }
 
             if($nerr==""&&$uerr==""&&$perr==""&&$cperr==""&&$emerr==""&&$terr==""&&$cerr==""&&$locerr==""&&$weberr==""&&$licerr==""){
-                $sql1 = "INSERT INTO login (username, password, usertype)
-                VALUES ('$uname', '$fpass','seeker');";
+                $sql1 = "INSERT INTO login (username, email, password, usertype)
+                VALUES ('$uname', '$email', '$fpass', 'employer');";
 
                 mysqli_query($conn, $sql1);
 
@@ -98,7 +126,7 @@
                 mysqli_query($conn, $sql2);
                 $_SESSION['empreg']="Successful";
 
-                //header('Location: login.php');
+                header('Location: login.php');
 
             }
             
@@ -140,8 +168,8 @@
 
                     <form action="empreg.php" method="POST">
 
-                    <div align="left" style="background-color: lightgrey; padding: 50px; color:black; max-width: 750px; padding-left: 100px; padding-right: 100px;">
-                    <label style="font-size: 25px">Register as a Job Seeker!</label>
+                    <div align="left" style="background-color: #e6e6e6; padding: 50px; color:black; max-width: 750px; padding-left: 100px; padding-right: 100px;">
+                    <label style="font-size: 25px">Register as an Employer</label>
                     <br><br><br>
                     <table width="100%">
                         <!-- Name -->

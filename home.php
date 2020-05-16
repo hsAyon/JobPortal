@@ -13,7 +13,7 @@
 
                     <form action="sekreg.php" method="POST">
 
-                    <div style="background-color: lightgrey; padding: 50px; color:black; max-width: 500px;">
+                    <div style="background-color: #e6e6e6; padding: 50px; color:black; max-width: 500px;">
                     <label style="font-size: 25px">Register as a Job Seeker!</label>
                     <br><br><br>
                     <table width="100%";>
