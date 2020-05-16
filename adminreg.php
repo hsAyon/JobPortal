@@ -9,11 +9,14 @@
     
     $fname=$uname=$pass=$cpass=$fpass=$email="";
 
+    error_reporting(0);
+
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if(isset($_POST['homereg'])){
             $fname=$_POST['fname'];
         }
-        elseif(isset($_POST['sekreg'])){
+        elseif(isset($_POST['adminreg'])){
             if(!empty($_POST['fname'])){
                 $fname=$_POST['fname'];
             }
@@ -23,12 +26,37 @@
 
             if(!empty($_POST['uname'])){
                 $uname=$_POST['uname'];
+                $sqlUserCheck = "SELECT * FROM login WHERE username = '$uname'";
+                $result = mysqli_query($conn, $sqlUserCheck);
+
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $uNameInDB = $row['username'];
+                }
+                if ($uNameInDB == $uname) {
+                    $uerr = "UserName already exists!";
+                    $uname="";
+                } 
+                else {
+                    $uname=$_POST['uname'];
+                }
             }
             else{
                 $uerr="No username given!";
             }
             if(!empty($_POST['email'])){
                 $email=$_POST['email'];
+                $sqlUserCheck = "SELECT * FROM login WHERE email = '$email'";
+                $result = mysqli_query($conn, $sqlUserCheck);
+
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $emailInDB = $row['email'];
+                }
+                if ($emailInDB == $email) {
+                    $emerr = "Email already exists!";
+                } 
+                else {
+                    $email=$_POST['email'];
+                }
             }
             else {
                 $emerr="No email given!";
@@ -55,8 +83,8 @@
             }
 
             if($nerr==""&&$uerr==""&&$perr==""&&$cperr==""&&$emerr==""){
-                $sql1 = "INSERT INTO login (username, password, usertype)
-                VALUES ('$uname', '$fpass','admin');";
+                $sql1 = "INSERT INTO login (username, email, password, usertype)
+                VALUES ('$uname', '$email', '$fpass', 'admin');";
 
                 mysqli_query($conn, $sql1);
 
@@ -110,7 +138,7 @@
 
                     <form action="adminreg.php" method="POST">
 
-                    <div align="left" style="background-color: lightgrey; padding: 50px; color:black; max-width: 750px; padding-left: 100px; padding-right: 100px;">
+                    <div align="left" style="background-color: #e6e6e6; padding: 50px; color:black; max-width: 750px; padding-left: 100px; padding-right: 100px;">
                     <label style="font-size: 25px">Register Admin</label>
                     <br><br><br>
                     <table width="100%">

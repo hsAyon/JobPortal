@@ -3,7 +3,7 @@
 $dbServerName = "localhost";
 $dbUserName = "root";
 $dbPassword = "";
-$dbName = "job";
+$dbName = "jobplatdb";
 
 $conn = mysqli_connect($dbServerName, $dbUserName, $dbPassword, $dbName);
 

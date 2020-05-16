@@ -6,16 +6,16 @@
     include "inc/db.php";
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
-        if(isset($_POST['approve'])){
-            //var_dump($_POST['approve']);
+        if(isset($_POST['remove'])){
+            //var_dump($_POST['remove']);
 
-            foreach ($_POST['approve'] as $key => $value){
+            foreach ($_POST['remove'] as $key => $value){
                 
                 $uID=$key;
-                $sql1="UPDATE employer SET approval=1 WHERE userID=$uID";
+                $sql1="DELETE FROM admin WHERE userID=$uID";
                 mysqli_query($conn,$sql1);
             }
-            
+            unset($_POST['remove']);
         }
         
     }
@@ -29,45 +29,37 @@
     <table align="center" width="1000px" style="padding: 50px; color: black; font-family: Verdana;">
         <tr align="center">
             <td>
-                <table width="100%">
+                <table>
                     <tr>
                         <td>
-                            <a href="adminadmin.php">View Admins</a>
+                            <a href="admin.php">Go Back</a>
                         </td>
-                        <td>
-                            <a href="adminemp.php">View Employers</a>
-                        </td>
-                        <td>
-                            <a href="adminsek.php">View Seekers</a>
-                        </td>
-                        <td>
-                            <a href="adminjob.php">View Jobs</a>
-                        </td>
+                        
                     </tr>
                 </table>
             </td>
         </tr>
         <tr align="center">
-            <!-- approval section -->
+            <!-- employers -->
 
             <td>
                 <div style="background-color: #e6e6e6; padding: 50px; color:black;">
                     <?php
                                     
-                    $sql = "SELECT * FROM employer WHERE approval = 0;";
+                    $sql = "SELECT * FROM admin";
                     $result = mysqli_query($conn,$sql);
                 
                     ?>
                     <table width="1000px" style="text-align: center;">
                         <form action="" method="POST">
                             <tr>
-                                <td colspan="4"><b>Pending Applroval</b></td>
+                                <td colspan="4"><b>Admins</b></td>
                             </tr>
                             <tr>
                                 <th>UserName</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Approval</th>
+                                <th>Remove</th>
                             </tr>
                             <?php
                             while($rows=mysqli_fetch_assoc($result)){
@@ -80,7 +72,8 @@
                                     ?></td>
                                 <td style="vertical-align: top"><?php echo $rows['name'] ?></td>
                                 <td style="vertical-align: top"><?php echo $rows['email'] ?></td>
-                                <td style="vertical-align: top"><input type="submit" id="<?php echo $rows['userID']; ?>" name="approve[<?php echo $rows['userID']; ?>]" value="Approve"></td>
+                                <td style="vertical-align: top"><input type="submit" id="<?php echo $rows['userID']; ?>" name="remove[<?php echo $rows['userID']; ?>]"
+                                        value="Remove"></td>
                             </tr>
                             <?php
                             }
