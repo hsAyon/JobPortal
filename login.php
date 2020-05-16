@@ -5,8 +5,15 @@
     include_once "inc/homeheader.php";
     include "inc/db.php";
 
+    error_reporting(0);
     $uname=$pass="";
     $uerr=$perr="";
+    $msg="";
+    if(isset($_GET['msg'])){
+        if($_GET['msg']=="na"){
+            $msg="Not Approved";
+        }
+    }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST['uname'])) {
@@ -99,6 +106,11 @@
 
     <body style="color: black; font-family: Verdana;">
         <table width="100%" style="padding: 50px; color: black; font-family: Verdana;">
+           <tr>
+               <td align="center" style="color: red">
+                   <?php echo $msg; ?>
+               </td>
+            </tr>
             <tr>
                 <td width="50%" align="center">
 

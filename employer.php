@@ -12,6 +12,16 @@
     }
 
     $user=$_SESSION['username'];
+    $userID=$_SESSION['user'];
+    $sqlapprove="SELECT * FROM employer WHERE userID = '$user'";
+    $resapporve=mysqli_query($conn,$sqlapprove);
+    $rowapprove=mysqli_fetch_assoc($resapporve);
+
+    if($rowapprove['approval']==0){
+        
+        header('Location: logout.php?msg=na');
+    }
+
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         if(isset($_POST['remove'])){
             //var_dump($_POST['remove']);
